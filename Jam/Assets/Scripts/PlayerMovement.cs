@@ -22,8 +22,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Gravity
-        if (controller.isGrounded && velocity.y < 0)
-            velocity.y = 0f;
+
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+
+        // Jump
+        if (controller.isGrounded && Input.GetButtonDown("Jump"))
+        {
+
+            velocity.y = m_PlayerData.jumpHeight;
+        }
+
+        controller.Move(velocity * Time.deltaTime);
 
         // Movement
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
@@ -34,14 +44,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * Time.deltaTime * m_PlayerData.speed);
 
 
-        // Jump
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
-        {
-            velocity.y += m_PlayerData.jumpHeight;
-        }
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+       
 
         // Camera rotation
         mouseX += Input.GetAxis("Mouse X");
