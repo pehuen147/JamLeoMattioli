@@ -515,6 +515,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &881713048
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1098391738}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 54.154896
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 54.15489
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 54.15489
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
+      propertyPath: m_Name
+      value: RetopoLow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c64fc004830272e4aa202d2c2a3a6b94, type: 3}
 --- !u!1 &1073369172
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +679,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1098391738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4500287957724298504, guid: 67e684bd36022474d98abef4445574c0, type: 3}
+  m_PrefabInstance: {fileID: 4500287957125232940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1870191502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,5 +1135,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4500287957724298510, guid: 67e684bd36022474d98abef4445574c0, type: 3}
+    - {fileID: 4500287957724298511, guid: 67e684bd36022474d98abef4445574c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 67e684bd36022474d98abef4445574c0, type: 3}
