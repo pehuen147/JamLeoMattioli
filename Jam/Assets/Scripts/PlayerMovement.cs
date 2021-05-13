@@ -53,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 mouseRotation = new Vector2(Input.GetAxis("Mouse X"), mouseY);
         transform.Rotate(0, mouseRotation.x, 0);
-        m_Camera.transform.rotation = Quaternion.Euler(mouseY, 0, 0);
+
+        Quaternion cameraRotation = m_Camera.transform.rotation;
+        m_Camera.transform.rotation = Quaternion.Euler(mouseY, cameraRotation.eulerAngles.y, cameraRotation.eulerAngles.z);
     }
 }
