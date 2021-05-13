@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movementBarDefaultSize;
 
+    bool isMoving = false;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -56,10 +58,18 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * Time.deltaTime * m_PlayerData.speed);
 
         // Movement bar
-        if (move != Vector3.zero && barTime < maxBarTime)
+        if (move != Vector3.zero)
+        {
+            isMoving = true;
+
+            if (barTime < maxBarTime)
                 barTime += m_PlayerData.movementBarSpeed * Time.deltaTime;
+        }
         else
+        {
             barTime -= m_PlayerData.movementBarSpeed * Time.deltaTime;
+            isMoving = false;
+        }
 
         movementBar.rectTransform.sizeDelta = new Vector2(movementBarDefaultSize.x / maxBarTime * barTime
                                                         , movementBarDefaultSize.y);
@@ -79,5 +89,10 @@ public class PlayerMovement : MonoBehaviour
 
         Quaternion cameraRotation = m_Camera.transform.rotation;
         m_Camera.transform.rotation = Quaternion.Euler(mouseY, cameraRotation.eulerAngles.y, cameraRotation.eulerAngles.z);
+    }
+
+    public bool IsMoving()
+    {
+        return isMoving;
     }
 }
