@@ -9,4 +9,5 @@ public class PlayerData : ScriptableObject
     public float speed;
     public float sprintSpeed;
     public float jumpHeight;
+    public float movementBarSpeed;
 }
