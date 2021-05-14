@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float Velocity = 1 ;
-    // Update is called once per frame
+    public float speed = 1 ;
+
+    public Bullet(float _speed)
+    {
+        speed = _speed;
+    }
+
     void Update()
     {
         MovBullet();
@@ -13,7 +18,7 @@ public class Bullet : MonoBehaviour
 
     void MovBullet()
     {
-        Vector3 forwardVec= Vector3.forward;
-        transform.position += (forwardVec * Time.deltaTime * Velocity);
+        Vector3 forwardVec= transform.forward;
+        transform.position += (forwardVec * Time.deltaTime * speed);
     }
 }
