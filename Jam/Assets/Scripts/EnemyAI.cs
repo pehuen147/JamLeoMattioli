@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     [SerializeField] EnemyData data;
+
+    private void Start()
+    {
+        player = PlayerSingleton.Instance.transform;
+    }
 
     private void Update()
     {
