@@ -1,54 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &641525436
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149514898370}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2f5b0708a0a3cc4883175a99540d911, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &641525437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132149514898370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d338f5e11efcc4c42bdea26801b67d4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1392830937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6838713201448742939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dad3e0797e5557409f397f4ab0fd5db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Colors:
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0.02859211, g: 0, b: 1, a: 0}
-  - {r: 0, g: 1, b: 0.054832935, a: 0}
-  timeToChangeColor: 3
-  useButton: 1
 --- !u!1 &1546826731
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +146,37 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!95 &641525436
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149514898370}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2f5b0708a0a3cc4883175a99540d911, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &641525437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149514898370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d338f5e11efcc4c42bdea26801b67d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127478963249733364
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +275,7 @@ GameObject:
   - component: {fileID: 1127478964169737388}
   - component: {fileID: 1127478964169737391}
   - component: {fileID: 1462561437}
+  - component: {fileID: 196547428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -412,6 +395,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 6896826441767631088, guid: 9693119e889f40e409db5e27eca60264, type: 3}
   SpawnBulletPoint: {fileID: 1546826731}
+--- !u!114 &196547428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127478964169737389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 667d6bdbe663b244c8794ec96edc89de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1392830937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6838713201448742939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dad3e0797e5557409f397f4ab0fd5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Colors:
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0.02859211, g: 0, b: 1, a: 0}
+  - {r: 0, g: 1, b: 0.054832935, a: 0}
+  timeToChangeColor: 3
+  useButton: 1
 --- !u!1001 &494352019
 PrefabInstance:
   m_ObjectHideFlags: 0
