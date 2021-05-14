@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,9 +15,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerData m_PlayerData;
     [SerializeField] GameObject m_Camera;
 
+    [SerializeField] Image movementBar;
+
+    float barTime;
+    const float maxBarTime = 100;
+
+    Vector2 movementBarDefaultSize;
+
+    bool isMoving = false;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        movementBarDefaultSize = movementBar.rectTransform.sizeDelta;
+
+        barTime = maxBarTime;
     }
 
     void Update()
@@ -43,8 +57,27 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * Time.deltaTime * m_PlayerData.speed);
 
+        // Movement bar
+        if (move != Vector3.zero)
+        {
+            isMoving = true;
 
-       
+            if (barTime < maxBarTime)
+                barTime += m_PlayerData.movementBarSpeed * Time.deltaTime;
+        }
+        else
+        {
+            barTime -= m_PlayerData.movementBarSpeed * Time.deltaTime;
+            isMoving = false;
+        }
+
+        movementBar.rectTransform.sizeDelta = new Vector2(movementBarDefaultSize.x / maxBarTime * barTime
+                                                        , movementBarDefaultSize.y);
+        Debug.Log(move != Vector3.zero);
+
+
+        if (barTime <= 0)
+            Debug.Log("Muere");
 
         // Camera rotation
         mouseX += Input.GetAxis("Mouse X");
@@ -53,6 +86,13 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 mouseRotation = new Vector2(Input.GetAxis("Mouse X"), mouseY);
         transform.Rotate(0, mouseRotation.x, 0);
-        m_Camera.transform.rotation = Quaternion.Euler(mouseY, 0, 0);
+
+        Quaternion cameraRotation = m_Camera.transform.rotation;
+        m_Camera.transform.rotation = Quaternion.Euler(mouseY, cameraRotation.eulerAngles.y, cameraRotation.eulerAngles.z);
+    }
+
+    public bool IsMoving()
+    {
+        return isMoving;
     }
 }
