@@ -14,6 +14,9 @@ public class GunController : MonoBehaviour
 
     bool lastIsMoving = false;
 
+    [SerializeField] GameObject BulletPrefab;
+    [SerializeField] GameObject SpawnBulletPoint;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -38,6 +41,8 @@ public class GunController : MonoBehaviour
     private void GunShot()
     {
         animator.SetTrigger(shotCommand);
+
+        Instantiate(BulletPrefab, SpawnBulletPoint.transform.position, Camera.main.transform.rotation);
     }
 
     private void Reload()
