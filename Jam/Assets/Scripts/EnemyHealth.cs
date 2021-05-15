@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag(playerBulletTag))
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             Destroy(this.gameObject);
         }
     }
