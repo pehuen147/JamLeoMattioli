@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] PlayerData m_PlayerData;
     [SerializeField] GameObject m_Camera;
-
     [SerializeField] Image movementBar;
 
     float barTime;

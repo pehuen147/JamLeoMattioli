@@ -16,7 +16,6 @@ public class GunController : MonoBehaviour
 
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] GameObject SpawnBulletPoint;
-
     private void Start()
     {
         animator = GetComponent<Animator>();

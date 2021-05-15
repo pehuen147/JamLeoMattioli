@@ -10,4 +10,5 @@ public class PlayerData : ScriptableObject
     public float sprintSpeed;
     public float jumpHeight;
     public float movementBarSpeed;
+    public Color currentGunColor;
 }
