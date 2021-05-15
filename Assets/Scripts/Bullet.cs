@@ -33,4 +33,14 @@ public class Bullet : MonoBehaviour
     {
         rend.material.SetColor("_Color", m_PlayerData.currentGunColor);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(GameManager.playerTag) || other.CompareTag(GameManager.enemyTag))
+        {
+            this.gameObject.SetActive(false);
+
+            other.GetComponent<Health>().TakeDamage(10);
+        }
+    }
 }

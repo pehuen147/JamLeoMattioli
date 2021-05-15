@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = -9.81f;
     private CharacterController controller;
     private Vector3 velocity;
+    private PlayerHealth health;
 
     private float mouseX;
     private float mouseY;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        health = GetComponent<PlayerHealth>();
 
         movementBarDefaultSize = movementBar.rectTransform.sizeDelta;
 
@@ -73,9 +75,8 @@ public class PlayerMovement : MonoBehaviour
         movementBar.rectTransform.sizeDelta = new Vector2(movementBarDefaultSize.x / maxBarTime * barTime
                                                         , movementBarDefaultSize.y);
 
-
         if (barTime <= 0)
-            Debug.Log("Muere");
+            health.Death();
 
         // Camera rotation
         mouseX += Input.GetAxis("Mouse X");
@@ -92,5 +93,10 @@ public class PlayerMovement : MonoBehaviour
     public bool IsMoving()
     {
         return isMoving;
+    }
+
+    public PlayerData GetData()
+    {
+        return m_PlayerData;
     }
 }
