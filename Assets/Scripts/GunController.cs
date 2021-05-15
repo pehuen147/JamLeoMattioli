@@ -13,6 +13,8 @@ public class GunController : MonoBehaviour
     const string shotCommand = "Shot";
     const string isMovingCommand = "IsMoving";
 
+    public float cooldownToFire = 1;
+    private float cooldownTimer;
     bool lastIsMoving = false;
 
     [SerializeField] GameObject bulletPrefab;
@@ -31,15 +33,23 @@ public class GunController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (cooldownTimer >= 0)
+            cooldownTimer -= Time.deltaTime;
+
+        if (cooldownTimer < 0)
+            cooldownTimer = 0;
+
+        if (Input.GetButtonDown("Fire1") && cooldownTimer == 0)
+        {
+            cooldownTimer = cooldownToFire;
+            Debug.Log("Dispare");
             GunShot();
+        }
         else if (Input.GetButtonDown(reloadCommand))
             Reload();
 
-
         if (lastIsMoving != movement.IsMoving())
             animator.SetBool(isMovingCommand, movement.IsMoving());
-
 
         lastIsMoving = movement.IsMoving();
     }
