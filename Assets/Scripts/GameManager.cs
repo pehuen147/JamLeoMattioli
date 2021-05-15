@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Color[] attackColors;
+
     public static GameManager SharedInstance;
 
     public const string playerTag = "Player";

@@ -9,5 +9,7 @@ public class EnemyData : ScriptableObject
     public float maxHealth;
     public float damage;
     public float shotCooldown;
+    public float animationWaitAfterShooting;
+    public float waitToChangeColor;
 }
 

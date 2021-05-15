@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 1237403321}
   - component: {fileID: 1237403320}
   - component: {fileID: 1237403322}
+  - component: {fileID: 1237403323}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -369,6 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e6bd92b65a167e4098e5d68231bace8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
 --- !u!4 &1237403321
 Transform:
   m_ObjectHideFlags: 0
@@ -398,6 +400,22 @@ MonoBehaviour:
   pooledObjects: []
   objectToPool: {fileID: 6896826441767631088, guid: 9693119e889f40e409db5e27eca60264, type: 3}
   amountToPool: 100
+--- !u!114 &1237403323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237403319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1601255c275be6c4290dbb089d55518d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.016202211, g: 1, b: 0, a: 1}
+  - {r: 0.109521866, g: 0, b: 1, a: 1}
 --- !u!1 &1727426694
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6365119218530906237, guid: 8e84c5c40c8ea8549b07722014c0c8df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.21742558
+      value: -29.9
       objectReference: {fileID: 0}
     - target: {fileID: 6365119218530906237, guid: 8e84c5c40c8ea8549b07722014c0c8df, type: 3}
       propertyPath: m_LocalPosition.y
@@ -518,7 +536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6365119218530906237, guid: 8e84c5c40c8ea8549b07722014c0c8df, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.35782743
+      value: -30.9
       objectReference: {fileID: 0}
     - target: {fileID: 6365119218530906237, guid: 8e84c5c40c8ea8549b07722014c0c8df, type: 3}
       propertyPath: m_LocalRotation.w
