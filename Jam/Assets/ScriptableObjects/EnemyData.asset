@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   speed: 2
+  maxHealth: 100
+  damage: 10
