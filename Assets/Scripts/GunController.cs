@@ -64,7 +64,9 @@ public class GunController : MonoBehaviour
 
         Renderer bulletRenderer = bullet.GetComponent<Renderer>();
 
-        bulletRenderer.material.SetColor("_Color", colorChanger.GetCurrentColor());
+        int currentColor = colorChanger.GetCurrentColor();
+
+        bullet.GetComponent<Bullet>().SetBulletColor(currentColor);
     }
 
     private void Reload()

@@ -58,9 +58,9 @@ public class ChangeColor : MonoBehaviour
         m_PlayerData.currentGunColor = Colors[indexColor];
     }
 
-    public Color GetCurrentColor()
+    public int GetCurrentColor()
     {
-        return Colors[indexColor];
+        return indexColor;
     }
 
     public int GetIndexColor() { return indexColor; }
