@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : Health
 {
@@ -19,11 +20,13 @@ public class PlayerHealth : Health
         if (currentHealth <= 0)
             Death();
 
+        Debug.Log(currentHealth);
+
     }
 
     public override void Death()
     {
-        Debug.Log("Muere");
+        SceneManager.LoadScene(GameManager.deathSceneName, LoadSceneMode.Single);
     }
 
 }

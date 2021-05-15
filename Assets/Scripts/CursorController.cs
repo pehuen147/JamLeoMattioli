@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
+    [SerializeField] bool active;
+
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (active)
+            Cursor.lockState = CursorLockMode.None;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
+
+        Cursor.visible = active;
     }
 }
