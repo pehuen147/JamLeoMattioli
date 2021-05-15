@@ -76,8 +76,11 @@ public class EnemyAI : MonoBehaviour
                 colorIndex = 0;
 
             rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
-
-            Debug.Log(colorIndex);
         }
+    }
+
+    public int GetCurrentColor()
+    {
+        return colorIndex;
     }
 }

@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     private Renderer rend;
     public float speed = 1;
 
+    int colorIndex = 0;
+
     IEnumerator destroyCoroutine;
 
     public Bullet(float _speed)
@@ -16,10 +18,9 @@ public class Bullet : MonoBehaviour
         speed = _speed;
     }
 
-    void Start()
+    private void Awake()
     {
         rend = GetComponent<Renderer>();
-        SetBulletColor();
     }
 
     void OnEnable()
@@ -39,9 +40,11 @@ public class Bullet : MonoBehaviour
         transform.position += (forwardVec * Time.deltaTime * speed);
     }
 
-    void SetBulletColor()
+    public void SetBulletColor(int index)
     {
-        rend.material.SetColor("_Color", m_PlayerData.currentGunColor);
+        colorIndex = index;
+        rend.material.SetColor("_EmissionColor", GameManager.SharedInstance.attackColors[colorIndex]);
+        rend.material.SetColor("_Color", GameManager.SharedInstance.attackColors[colorIndex]);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -60,7 +63,6 @@ public class Bullet : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        Debug.Log("hola");
         this.gameObject.SetActive(false);
     }
 }
