@@ -5,8 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] PlayerData m_PlayerData;
+    [SerializeField] float destroyTime = 5;
     private Renderer rend;
     public float speed = 1;
+
+    IEnumerator destroyCoroutine;
+
     public Bullet(float _speed)
     {
         speed = _speed;
@@ -16,6 +20,12 @@ public class Bullet : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         SetBulletColor();
+    }
+
+    void OnEnable()
+    {
+        destroyCoroutine = WaitToDestroy(destroyTime);
+        StartCoroutine(destroyCoroutine);
     }
 
     void Update()
@@ -44,5 +54,13 @@ public class Bullet : MonoBehaviour
             if (other.tag != this.tag)
                 other.GetComponent<Health>().TakeDamage(10);
         }
+    }
+    
+    IEnumerator WaitToDestroy(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        Debug.Log("hola");
+        this.gameObject.SetActive(false);
     }
 }

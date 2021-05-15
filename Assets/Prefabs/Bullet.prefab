@@ -109,4 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerData: {fileID: 11400000, guid: bfb9d85d17dd86844bcea1553f97cfd5, type: 2}
+  destroyTime: 5
   speed: 10
