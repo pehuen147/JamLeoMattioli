@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
@@ -7,12 +6,30 @@ public class EnemyAI : MonoBehaviour
     private Transform player;
     [SerializeField] EnemyData data;
 
-    IEnumerator coroutine;
+    Renderer rend;
+
+    IEnumerator waitShotCoroutine;
+    IEnumerator changeColorCoroutine;
+
+    Color[] attackColors;
+
+    int colorIndex;
+
     bool isStopped = false;
 
     private void Start()
     {
         player = PlayerSingleton.Instance.transform;
+
+        rend = GetComponentInChildren<Renderer>();
+
+        attackColors = GameManager.SharedInstance.attackColors;
+        colorIndex = Random.Range(0, attackColors.Length);
+
+        rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
+
+        changeColorCoroutine = WaitToChangeColor(data.waitToChangeColor);
+        StartCoroutine(changeColorCoroutine);
     }
 
     private void Update()
@@ -36,8 +53,8 @@ public class EnemyAI : MonoBehaviour
     public void StopWhileShooting()
     {
         isStopped = true;
-        coroutine = WaitAndShoot(data.animationWaitAfterShooting);
-        StartCoroutine(coroutine);
+        waitShotCoroutine = WaitAndShoot(data.animationWaitAfterShooting);
+        StartCoroutine(waitShotCoroutine);
     }
 
     IEnumerator WaitAndShoot(float waitTime)
@@ -45,5 +62,22 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         isStopped = false;
+    }
+
+    IEnumerator WaitToChangeColor(float waitTime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(waitTime);
+
+            colorIndex++;
+
+            if (colorIndex >= attackColors.Length)
+                colorIndex = 0;
+
+            rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
+
+            Debug.Log(colorIndex);
+        }
     }
 }

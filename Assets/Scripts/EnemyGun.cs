@@ -42,8 +42,6 @@ public class EnemyGun : MonoBehaviour
         // Shooting with left and right arm randomly
         int leftRightShot = Random.Range(0, 2);
 
-        Debug.Log(leftRightShot);
-
         switch (leftRightShot)
         {
             case (int)ShootingArm.left:

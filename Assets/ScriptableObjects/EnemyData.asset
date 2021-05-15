@@ -17,3 +17,4 @@ MonoBehaviour:
   damage: 10
   shotCooldown: 4
   animationWaitAfterShooting: 1
+  waitToChangeColor: 4

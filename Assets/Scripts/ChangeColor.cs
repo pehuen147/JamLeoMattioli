@@ -5,8 +5,9 @@ using UnityEngine;
 public class ChangeColor : MonoBehaviour
 {
     [SerializeField] PlayerData m_PlayerData;
-    
-    public List<Color> Colors = new List<Color>();
+
+    Color[] Colors;
+
     private int indexColor =-1;
     private Renderer rend;
 
@@ -18,7 +19,9 @@ public class ChangeColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-        rend = GetComponent<Renderer>(); 
+        rend = GetComponent<Renderer>();
+        Colors = GameManager.SharedInstance.attackColors;
+
         SetNewColor();
     }
 
@@ -46,7 +49,7 @@ public class ChangeColor : MonoBehaviour
     void SetNewColor()
     {
         indexColor++;
-        if (indexColor == Colors.Count)
+        if (indexColor == Colors.Length)
         {
             indexColor = 0;
         }
