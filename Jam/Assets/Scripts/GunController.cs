@@ -15,20 +15,18 @@ public class GunController : MonoBehaviour
 
     bool lastIsMoving = false;
 
-<<<<<<< HEAD
-    [SerializeField] GameObject BulletPrefab;
-    [SerializeField] GameObject SpawnBulletPoint;
-=======
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject spawnBulletPoint;
     [SerializeField] GameObject gun;
 
->>>>>>> 4ce0e47cfc2235c9c618f76a8c12901e2b045129
+    Transform mainCameraTransform;
     private void Start()
     {
         animator = GetComponent<Animator>();
         movement = GetComponentInParent<PlayerMovement>();
         colorChanger = gun.GetComponent<ChangeColor>();
+
+        mainCameraTransform = Camera.main.transform;
     }
 
     void Update()
@@ -50,7 +48,9 @@ public class GunController : MonoBehaviour
     {
         animator.SetTrigger(shotCommand);
 
-        GameObject bullet = Instantiate(bulletPrefab, spawnBulletPoint.transform.position, Camera.main.transform.rotation);
+        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+        bullet.transform.position = spawnBulletPoint.transform.position;
+        bullet.transform.rotation = mainCameraTransform.rotation;
 
         Renderer bulletRenderer = bullet.GetComponent<Renderer>();
 
