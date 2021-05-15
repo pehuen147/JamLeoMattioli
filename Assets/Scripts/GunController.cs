@@ -15,7 +15,6 @@ public class GunController : MonoBehaviour
 
     bool lastIsMoving = false;
 
-    [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject spawnBulletPoint;
     [SerializeField] GameObject gun;
 
@@ -51,6 +50,8 @@ public class GunController : MonoBehaviour
         GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
         bullet.transform.position = spawnBulletPoint.transform.position;
         bullet.transform.rotation = mainCameraTransform.rotation;
+
+        bullet.tag = GameManager.playerTag;
 
         Renderer bulletRenderer = bullet.GetComponent<Renderer>();
 

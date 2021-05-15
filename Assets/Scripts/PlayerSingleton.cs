@@ -17,7 +17,6 @@ public class PlayerSingleton : MonoBehaviour
         }
 
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
 
         Instance = instance;
     }

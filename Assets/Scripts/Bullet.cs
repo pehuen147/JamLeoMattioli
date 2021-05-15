@@ -36,11 +36,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+        this.gameObject.SetActive(false);
+
         if (other.CompareTag(GameManager.playerTag) || other.CompareTag(GameManager.enemyTag))
         {
-            this.gameObject.SetActive(false);
-
-            other.GetComponent<Health>().TakeDamage(10);
+            if (other.tag != this.tag)
+                other.GetComponent<Health>().TakeDamage(10);
         }
     }
 }

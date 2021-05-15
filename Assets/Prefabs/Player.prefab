@@ -282,7 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d338f5e11efcc4c42bdea26801b67d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 6896826441767631088, guid: 9693119e889f40e409db5e27eca60264, type: 3}
   spawnBulletPoint: {fileID: 2186587559343496852}
   gun: {fileID: 6838713201448742939}
 --- !u!1 &1127478963249733364
@@ -384,6 +383,7 @@ GameObject:
   - component: {fileID: 1127478964169737388}
   - component: {fileID: 1127478964169737391}
   - component: {fileID: 196547428}
+  - component: {fileID: -33386691024178115}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -499,6 +499,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 667d6bdbe663b244c8794ec96edc89de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-33386691024178115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127478964169737389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbddcb1e6a9f03d4faf58c7314216804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2186587559343496852
