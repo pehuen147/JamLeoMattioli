@@ -16,3 +16,4 @@ MonoBehaviour:
   maxHealth: 30
   damage: 10
   shotCooldown: 4
+  animationWaitAfterShooting: 1
