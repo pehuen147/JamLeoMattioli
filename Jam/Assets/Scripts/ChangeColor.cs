@@ -51,5 +51,10 @@ public class ChangeColor : MonoBehaviour
         rend.material.SetColor("_Color", Colors[indexColor]);
     }
 
+    public Color GetCurrentColor()
+    {
+        return Colors[indexColor];
+    }
+
     public int GetIndexColor() { return indexColor; }
 }
