@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dad3e0797e5557409f397f4ab0fd5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayerData: {fileID: 11400000, guid: bfb9d85d17dd86844bcea1553f97cfd5, type: 2}
   Colors:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0.02859211, g: 0, b: 1, a: 0}

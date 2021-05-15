@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
+    [SerializeField] PlayerData m_PlayerData;
+    
     public List<Color> Colors = new List<Color>();
     private int indexColor =-1;
     private Renderer rend;
@@ -49,6 +51,8 @@ public class ChangeColor : MonoBehaviour
             indexColor = 0;
         }
         rend.material.SetColor("_Color", Colors[indexColor]);
+        
+        m_PlayerData.currentGunColor = Colors[indexColor];
     }
 
     public Color GetCurrentColor()

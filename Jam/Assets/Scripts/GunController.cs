@@ -15,10 +15,15 @@ public class GunController : MonoBehaviour
 
     bool lastIsMoving = false;
 
+<<<<<<< HEAD
+    [SerializeField] GameObject BulletPrefab;
+    [SerializeField] GameObject SpawnBulletPoint;
+=======
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject spawnBulletPoint;
     [SerializeField] GameObject gun;
 
+>>>>>>> 4ce0e47cfc2235c9c618f76a8c12901e2b045129
     private void Start()
     {
         animator = GetComponent<Animator>();

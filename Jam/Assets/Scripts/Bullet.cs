@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 1 ;
-
+    [SerializeField] PlayerData m_PlayerData;
+    private Renderer rend;
+    public float speed = 1;
     public Bullet(float _speed)
     {
         speed = _speed;
+    }
+
+    void Start()
+    {
+        rend = GetComponent<Renderer>();
+        SetBulletColor();
     }
 
     void Update()
@@ -20,5 +27,10 @@ public class Bullet : MonoBehaviour
     {
         Vector3 forwardVec= transform.forward;
         transform.position += (forwardVec * Time.deltaTime * speed);
+    }
+
+    void SetBulletColor()
+    {
+        rend.material.SetColor("_Color", m_PlayerData.currentGunColor);
     }
 }
