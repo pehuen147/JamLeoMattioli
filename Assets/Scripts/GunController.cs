@@ -41,7 +41,6 @@ public class GunController : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && cooldownTimer == 0)
         {
             cooldownTimer = cooldownToFire;
-            Debug.Log("Dispare");
             GunShot();
         }
         else if (Input.GetButtonDown(reloadCommand))
