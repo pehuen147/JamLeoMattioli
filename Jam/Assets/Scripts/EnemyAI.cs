@@ -21,4 +21,9 @@ public class EnemyAI : MonoBehaviour
 
         transform.LookAt(player);
     }
+
+    public EnemyData GetData()
+    {
+        return data;
+    }
 }

@@ -72,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
 
         movementBar.rectTransform.sizeDelta = new Vector2(movementBarDefaultSize.x / maxBarTime * barTime
                                                         , movementBarDefaultSize.y);
-        Debug.Log(move != Vector3.zero);
 
 
         if (barTime <= 0)

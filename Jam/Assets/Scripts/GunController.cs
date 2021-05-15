@@ -5,8 +5,9 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     Animator animator;
-
     PlayerMovement movement;
+    GunController gunController;
+    ChangeColor colorChanger;
 
     const string reloadCommand = "Reload";
     const string shotCommand = "Shot";
@@ -14,12 +15,20 @@ public class GunController : MonoBehaviour
 
     bool lastIsMoving = false;
 
+<<<<<<< HEAD
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] GameObject SpawnBulletPoint;
+=======
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject spawnBulletPoint;
+    [SerializeField] GameObject gun;
+
+>>>>>>> 4ce0e47cfc2235c9c618f76a8c12901e2b045129
     private void Start()
     {
         animator = GetComponent<Animator>();
         movement = GetComponentInParent<PlayerMovement>();
+        colorChanger = gun.GetComponent<ChangeColor>();
     }
 
     void Update()
@@ -41,7 +50,11 @@ public class GunController : MonoBehaviour
     {
         animator.SetTrigger(shotCommand);
 
-        Instantiate(BulletPrefab, SpawnBulletPoint.transform.position, Camera.main.transform.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, spawnBulletPoint.transform.position, Camera.main.transform.rotation);
+
+        Renderer bulletRenderer = bullet.GetComponent<Renderer>();
+
+        bulletRenderer.material.SetColor("_Color", colorChanger.GetCurrentColor());
     }
 
     private void Reload()
