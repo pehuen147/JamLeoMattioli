@@ -12,5 +12,6 @@ public class EnemyData : ScriptableObject
     public float animationWaitAfterShooting;
     public float waitToChangeColor;
     public float minimumShootingDistance;
+    public float minimumStopDistance;
 }
 
