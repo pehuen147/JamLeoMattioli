@@ -25,7 +25,7 @@ public class EnemyAI : MonoBehaviour
         if (changeColorCoroutine != null)
             StopCoroutine(changeColorCoroutine);
 
-        bool isStopped = false;
+        isStopped = false;
     }
 
     private void OnEnable()
@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
         {
             yield return new WaitForSeconds(waitTime);
 
-            colorIndex++;
+            colorIndex = Random.Range(0, GameManager.SharedInstance.attackColors.Length);
 
             if (colorIndex >= attackColors.Length)
                 colorIndex = 0;

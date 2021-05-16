@@ -73,7 +73,10 @@ public class EnemyGun : MonoBehaviour
 
         bullet.transform.LookAt(PlayerSingleton.Instance.transform);
 
-        bullet.GetComponent<Bullet>().SetBulletColor(enemyAI.GetCurrentColor());
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+        bulletScript.SetBulletColor(enemyAI.GetCurrentColor());
+        bulletScript.SetDamage(enemyAI.GetData().damage);
     }
 
     public enum ShootingArm { left , right };  

@@ -8,6 +8,7 @@ public class GunController : MonoBehaviour
     PlayerMovement movement;
     GunController gunController;
     ChangeColor colorChanger;
+    PlayerData data;
 
     const string reloadCommand = "Reload";
     const string shotCommand = "Shot";
@@ -26,6 +27,8 @@ public class GunController : MonoBehaviour
         animator = GetComponent<Animator>();
         movement = GetComponentInParent<PlayerMovement>();
         colorChanger = gun.GetComponent<ChangeColor>();
+
+        data = movement.GetData();
 
         mainCameraTransform = Camera.main.transform;
     }
@@ -66,7 +69,10 @@ public class GunController : MonoBehaviour
 
         int currentColor = colorChanger.GetCurrentColor();
 
-        bullet.GetComponent<Bullet>().SetBulletColor(currentColor);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+        bulletScript.SetBulletColor(currentColor);
+        bulletScript.SetDamage(data.damage);
     }
 
     private void Reload()
