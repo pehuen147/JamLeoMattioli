@@ -8,6 +8,7 @@ public class EnemyGun : MonoBehaviour
     [SerializeField] Transform bulletSpawnR;
     [SerializeField] float shotWaitAnimationTime;
 
+    GameObject player;
     EnemyAI enemyAI;
     EnemyData enemyData;
     Animator animator;
@@ -22,18 +23,25 @@ public class EnemyGun : MonoBehaviour
         enemyAI = GetComponent<EnemyAI>();
         animator = GetComponent<Animator>();
 
+        player = PlayerSingleton.Instance.gameObject;
+
         enemyData = enemyAI.GetData();
         shotCooldown = enemyData.shotCooldown;
     }
 
     private void Update()
     {
-        shotTimer -= Time.deltaTime;
+        Vector3 diff = transform.position - player.transform.position;
 
-        if (shotTimer <= 0)
+        if (diff.magnitude < enemyData.minimumShootingDistance)
         {
-            Shoot();
-            shotTimer = shotCooldown;
+            shotTimer -= Time.deltaTime;
+
+            if (shotTimer <= 0)
+            {
+                Shoot();
+                shotTimer = shotCooldown;
+            }
         }
     }
 
@@ -71,7 +79,7 @@ public class EnemyGun : MonoBehaviour
 
         bullet.transform.position = spawn.position;
 
-        bullet.transform.LookAt(PlayerSingleton.Instance.transform);
+        bullet.transform.LookAt(player.transform);
 
         Bullet bulletScript = bullet.GetComponent<Bullet>();
 
