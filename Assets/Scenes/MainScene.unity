@@ -714,6 +714,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7848106855474198004, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a220833f94ee5bc489200e23480c9c46, type: 2}
     - target: {fileID: -5476042492441229932, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -722,6 +726,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3401060899674192305, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9acff7b55fdc3a94b99b564c22560242, type: 2}
     - target: {fileID: -3279832933336740806, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -738,6 +746,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5802252383497004349, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ce660b6e4a0b5348b475ad89d43c2ed, type: 2}
     - target: {fileID: 7040179091034789346, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
@@ -746,6 +758,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7825218586304337241, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0b0ab7dc0a5e0bd45aaeed1e42ee3c17, type: 2}
     - target: {fileID: 8562407562423627312, guid: bb6b240367b963b4294159e952ed4d2f, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
