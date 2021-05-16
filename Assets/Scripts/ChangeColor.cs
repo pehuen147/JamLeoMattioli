@@ -5,6 +5,7 @@ using UnityEngine;
 public class ChangeColor : MonoBehaviour
 {
     [SerializeField] PlayerData m_PlayerData;
+    [SerializeField] Renderer hands;
 
     Color[] Colors;
 
@@ -54,7 +55,8 @@ public class ChangeColor : MonoBehaviour
             indexColor = 0;
         }
         rend.material.SetColor("_EmissionColor", Colors[indexColor]);
-        
+        hands.material.SetColor("_EmissionColor", Colors[indexColor]);
+
         m_PlayerData.currentGunColor = Colors[indexColor];
     }
 

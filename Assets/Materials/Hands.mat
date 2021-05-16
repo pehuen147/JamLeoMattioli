@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GunMat
+  m_Name: Hands
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP
   m_LightmapFlags: 2
@@ -36,15 +36,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: d1ca1a0a961334045993c9666ff2a1f0, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd63638eba9ffbc40a813a6894dbf595, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6c6a87df3fbcc1e48bac225f437a6a0d, type: 3}
+        m_Texture: {fileID: 2800000, guid: ead6e44255d44be4f92cc9643388146e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: abb3cc91c6f811b40809fa1d09b70328, type: 3}
+        m_Texture: {fileID: 2800000, guid: e3492cdf784573646a4a41f5a79bde88, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:

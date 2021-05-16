@@ -56,7 +56,7 @@ public class GunController : MonoBehaviour
     {
         animator.SetTrigger(shotCommand);
 
-        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+        GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
         bullet.transform.position = spawnBulletPoint.transform.position;
         bullet.transform.rotation = mainCameraTransform.rotation;
 

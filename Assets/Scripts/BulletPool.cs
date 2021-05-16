@@ -2,32 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class BulletPool : MonoBehaviour
 {
-    public static ObjectPool SharedInstance;
     [SerializeField] List<GameObject> pooledObjects;
     [SerializeField] GameObject objectToPool;
     [SerializeField] int amountToPool;
+    public static BulletPool SharedInstance;
 
     private void Awake()
     {
-        SharedInstance = this;
+        Initialize();
     }
 
-    private void Start()
+    public void Initialize()
     {
+        SharedInstance = this;
+
         pooledObjects = new List<GameObject>();
         GameObject tmp;
 
         for (int i = 0; i < amountToPool; i++)
         {
-            tmp = Instantiate(objectToPool,this.transform);
+            tmp = Instantiate(objectToPool, this.transform);
             tmp.SetActive(false);
             pooledObjects.Add(tmp);
         }
     }
 
-    public GameObject GetPooledObject()
+    public virtual GameObject GetPooledObject()
     {
         for (int i = 0; i < amountToPool; i++)
         {
@@ -39,6 +41,11 @@ public class ObjectPool : MonoBehaviour
                 return pObject;
             }
         }
-        return null;
+
+        GameObject tmp;
+        tmp = Instantiate(objectToPool, this.transform);
+        pooledObjects.Add(tmp);
+
+        return tmp;
     }
 }
