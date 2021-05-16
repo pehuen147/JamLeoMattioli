@@ -11,11 +11,15 @@ public class ChangeColor : MonoBehaviour
 
     private int indexColor =-1;
     private Renderer rend;
-
+    
     private float currentTime = 0;
     public float timeToChangeColor = 3;
 
     public bool useButton = true;
+
+    //nuevo
+    //public Animator animator;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +37,7 @@ public class ChangeColor : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire2"))
             {
+                //animator.SetTrigger("Reload");
                 SetNewColor();
             }
         }
@@ -64,4 +69,7 @@ public class ChangeColor : MonoBehaviour
     }
 
     public int GetIndexColor() { return indexColor; }
+
+   
 }
+
