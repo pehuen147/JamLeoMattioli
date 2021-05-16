@@ -1,9 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
     private Transform player;
+    private NavMeshAgent agent;
+    private Animator anim;
+
     [SerializeField] EnemyData data;
 
     Renderer rend;
@@ -11,11 +15,18 @@ public class EnemyAI : MonoBehaviour
     IEnumerator waitShotCoroutine;
     IEnumerator changeColorCoroutine;
 
+    bool waitShotIsRunning = false;
+
     Color[] attackColors;
 
     int colorIndex;
 
     bool isStopped = false;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnDisable()
     {
@@ -25,13 +36,15 @@ public class EnemyAI : MonoBehaviour
         if (changeColorCoroutine != null)
             StopCoroutine(changeColorCoroutine);
 
-        isStopped = false;
+        isStopped = true;
     }
 
     private void OnEnable()
     {
         changeColorCoroutine = WaitToChangeColor(data.waitToChangeColor);
         StartCoroutine(changeColorCoroutine);
+
+        isStopped = false;
     }
 
     private void Start()
@@ -39,6 +52,7 @@ public class EnemyAI : MonoBehaviour
         player = PlayerSingleton.Instance.transform;
 
         rend = GetComponentInChildren<Renderer>();
+        agent = GetComponent<NavMeshAgent>();
 
         attackColors = GameManager.SharedInstance.attackColors;
         colorIndex = Random.Range(0, attackColors.Length);
@@ -48,15 +62,26 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        Vector3 diff = transform.position - player.position;
+
+        agent.isStopped = isStopped;
+
+        bool isClose = (diff.magnitude < data.minimumStopDistance);
+
+        if (!isClose && !waitShotIsRunning)
+            isStopped = false;
+
         if (!isStopped)
         {
-            Vector3 diff = transform.position - player.position;
-            Vector3 dir = diff.normalized;
+            isStopped = isClose;
 
-            transform.position += transform.forward * data.speed * Time.deltaTime;
-
-            transform.LookAt(player);
+            agent.SetDestination(player.position);
         }
+        else
+            transform.LookAt(player);
+
+
+        UpdateAnimation();
     }
 
     public EnemyData GetData()
@@ -73,8 +98,11 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator WaitAndShoot(float waitTime)
     {
+        waitShotIsRunning = true;
+
         yield return new WaitForSeconds(waitTime);
 
+        waitShotIsRunning = false;
         isStopped = false;
     }
 
@@ -96,5 +124,11 @@ public class EnemyAI : MonoBehaviour
     public int GetCurrentColor()
     {
         return colorIndex;
+    }
+
+    void UpdateAnimation()
+    {
+        if (isStopped == anim.GetBool("IsWalking"))
+            anim.SetBool("IsWalking", !isStopped);
     }
 }
