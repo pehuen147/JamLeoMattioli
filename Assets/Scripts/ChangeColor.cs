@@ -91,7 +91,5 @@ public class ChangeColor : MonoBehaviour
     }
 
     public int GetIndexColor() { return indexColor; }
-
-   
 }
 
