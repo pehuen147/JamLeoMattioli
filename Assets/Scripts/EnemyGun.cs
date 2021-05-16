@@ -65,7 +65,7 @@ public class EnemyGun : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+        GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
 
         bullet.tag = GameManager.enemyTag;
 

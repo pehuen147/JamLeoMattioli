@@ -11,12 +11,15 @@ public class EnemyHealth : Health
     EnemyAI enemyAI;
     EnemyData data;
 
-    private void Start()
+    private void OnEnable()
+    {
+        health = data.maxHealth;
+    }
+
+    private void Awake()
     {
         enemyAI = GetComponent<EnemyAI>();
         data = enemyAI.GetData();
-
-        health = data.maxHealth;
     }
 
     public override void TakeDamage(float damage)
@@ -29,6 +32,6 @@ public class EnemyHealth : Health
 
     public override void Death()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }
