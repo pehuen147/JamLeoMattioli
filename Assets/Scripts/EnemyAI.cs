@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     IEnumerator waitShotCoroutine;
     IEnumerator changeColorCoroutine;
 
+    bool waitShotIsRunning = false;
+
     Color[] attackColors;
 
     int colorIndex;
@@ -64,14 +66,20 @@ public class EnemyAI : MonoBehaviour
 
         agent.isStopped = isStopped;
 
+        bool isClose = (diff.magnitude < data.minimumStopDistance);
+
+        if (!isClose && !waitShotIsRunning)
+            isStopped = false;
+
         if (!isStopped)
         {
-            isStopped = (diff.magnitude < data.minimumStopDistance);
+            isStopped = isClose;
 
             agent.SetDestination(player.position);
         }
+        else
+            transform.LookAt(player);
 
-        transform.LookAt(player);
 
         UpdateAnimation();
     }
@@ -90,8 +98,11 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator WaitAndShoot(float waitTime)
     {
+        waitShotIsRunning = true;
+
         yield return new WaitForSeconds(waitTime);
 
+        waitShotIsRunning = false;
         isStopped = false;
     }
 
