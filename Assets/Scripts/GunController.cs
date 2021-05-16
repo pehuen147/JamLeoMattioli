@@ -48,8 +48,9 @@ public class GunController : MonoBehaviour
             cooldownTimer = cooldownToFire;
             GunShot();
         }
-        else if (Input.GetButtonDown(reloadCommand))
-            Reload();
+        
+        else if (Input.GetButtonDown("Fire2"))
+           Reload();
 
         if (lastIsMoving != movement.IsMoving())
             animator.SetBool(isMovingCommand, movement.IsMoving());
