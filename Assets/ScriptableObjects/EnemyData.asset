@@ -18,3 +18,5 @@ MonoBehaviour:
   shotCooldown: 4
   animationWaitAfterShooting: 1
   waitToChangeColor: 4
+  minimumShootingDistance: 10
+  minimumStopDistance: 4
