@@ -49,6 +49,10 @@ public class ChangeColor : MonoBehaviour
     
     void SetNewColor()
     {
+        SoundManager sManager = SoundManager.SharedInstance;
+
+        sManager.PlayOneShotPlayer(sManager.changeColorSFX);
+
         indexColor++;
         if (indexColor == Colors.Length)
         {
