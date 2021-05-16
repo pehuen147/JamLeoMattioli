@@ -9,6 +9,7 @@ public class GunController : MonoBehaviour
     GunController gunController;
     ChangeColor colorChanger;
     PlayerData data;
+    AudioSource audioSource;
 
     const string reloadCommand = "Reload";
     const string shotCommand = "Shot";
@@ -24,6 +25,7 @@ public class GunController : MonoBehaviour
     Transform mainCameraTransform;
     private void Start()
     {
+        audioSource = GetComponentInParent<AudioSource>();
         animator = GetComponent<Animator>();
         movement = GetComponentInParent<PlayerMovement>();
         colorChanger = gun.GetComponent<ChangeColor>();
@@ -46,8 +48,9 @@ public class GunController : MonoBehaviour
             cooldownTimer = cooldownToFire;
             GunShot();
         }
-        else if (Input.GetButtonDown(reloadCommand))
-            Reload();
+        
+        else if (Input.GetButtonDown("Fire2"))
+           Reload();
 
         if (lastIsMoving != movement.IsMoving())
             animator.SetBool(isMovingCommand, movement.IsMoving());
@@ -57,14 +60,22 @@ public class GunController : MonoBehaviour
 
     private void GunShot()
     {
+        // Shot sound
+        SoundManager soundManager = SoundManager.SharedInstance;
+        soundManager.PlayOneShot(soundManager.playerShotSFX, audioSource);
+
+        // Animation
         animator.SetTrigger(shotCommand);
 
+        // Projectile
         GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
         bullet.transform.position = spawnBulletPoint.transform.position;
         bullet.transform.rotation = mainCameraTransform.rotation;
 
         bullet.tag = GameManager.playerTag;
+        bullet.layer = LayerMask.NameToLayer(GameManager.enemyTag);
 
+        // Projectile color
         Renderer bulletRenderer = bullet.GetComponent<Renderer>();
 
         int currentColor = colorChanger.GetCurrentColor();

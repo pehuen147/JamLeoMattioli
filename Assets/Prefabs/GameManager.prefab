@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8967291654585062664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8967291654585062662}
+  - component: {fileID: 8967291654585062663}
+  - component: {fileID: 8967291654585062660}
+  - component: {fileID: 8967291654585062661}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8967291654585062662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967291654585062664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 242.92654, y: 159.27094, z: 30.004347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8967291654585062663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967291654585062664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e6bd92b65a167e4098e5d68231bace8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+--- !u!114 &8967291654585062660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967291654585062664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1601255c275be6c4290dbb089d55518d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0.016202211, g: 1, b: 0, a: 1}
+  - {r: 0.109521866, g: 0, b: 1, a: 1}
+--- !u!114 &8967291654585062661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967291654585062664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96b35f95fb5b5842915fee557122630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reflectShotSFX:
+  - {fileID: 8300000, guid: 028c352aab64d6a4389b0b042a034e8b, type: 3}
+  - {fileID: 8300000, guid: 159c6a8a8b6479a478f7fafc33c63f73, type: 3}
+  - {fileID: 8300000, guid: 1c990c5a514d1c948b9ceb82a716afe0, type: 3}
+  - {fileID: 8300000, guid: a9ca5480fbc27d343b817b1a85a8db78, type: 3}
+  - {fileID: 8300000, guid: 7bb34ab3ab665624881539e5e5298162, type: 3}
+  - {fileID: 8300000, guid: c4631e884e95a6141bbee822b2af70c1, type: 3}
+  - {fileID: 8300000, guid: e629128375a51a44ba174f464c0a4f52, type: 3}
+  - {fileID: 8300000, guid: 343102d27a1c24e4c88015e402568098, type: 3}
+  - {fileID: 8300000, guid: 3df51ab2131ea6a4cb386807b01e6c5c, type: 3}
+  - {fileID: 8300000, guid: 0d2052788d686eb49b8b147d44b1c477, type: 3}
+  changeColorSFX:
+  - {fileID: 8300000, guid: 133ebf1bfb8f9404383cc84e01768a5a, type: 3}
+  - {fileID: 8300000, guid: 65d0065243766a14fb2c91ed07cc0a96, type: 3}
+  - {fileID: 8300000, guid: deb4b3e1770769045bb60e4889bfa178, type: 3}
+  playerShotSFX:
+  - {fileID: 8300000, guid: b0179eae3e9f0454ca32e6f6e652378a, type: 3}
+  - {fileID: 8300000, guid: 78efb4531432c2d46a56ca7a3977aaac, type: 3}
+  - {fileID: 8300000, guid: 8253b139cea2dae4fbad94af3671b7ef, type: 3}
+  - {fileID: 8300000, guid: 3248cd8b704b23a459c5feeb73456a98, type: 3}
+  - {fileID: 8300000, guid: 202ab7482bd78af4b81ca6244d9ec834, type: 3}
+  - {fileID: 8300000, guid: 22b2be844b9071441862d4f6773b9f2c, type: 3}
+  playerTakeDamageSFX:
+  - {fileID: 8300000, guid: d231bc1f2783bff429c11d56c68c149b, type: 3}
+  - {fileID: 8300000, guid: 280955d8f157c6640b6fd44b6fb14d4a, type: 3}
+  - {fileID: 8300000, guid: ee4de7ad9bfcb63449534491ec381d43, type: 3}
+  - {fileID: 8300000, guid: db224220d9e79cc4db1945407e533759, type: 3}
+  - {fileID: 8300000, guid: 44bf54679981dd34a9fb07fbd912e67a, type: 3}
+  playerJumpSFX:
+  - {fileID: 8300000, guid: bb5273e1ed9d3b241a91b49a6d0ecfba, type: 3}
+  - {fileID: 8300000, guid: ef798c9375df6794282ce8b1de2c4ae8, type: 3}
+  - {fileID: 8300000, guid: f56e7ccd7cd5b324f963441e5505104b, type: 3}
+  - {fileID: 8300000, guid: 5ab7c6da66dd99f438cb3787941c188a, type: 3}
+  - {fileID: 8300000, guid: 30aa59ff2ccd5264fbbcf756820475d6, type: 3}
+  - {fileID: 8300000, guid: 10b7fba56cd18fb4c9ab1a83181e9162, type: 3}
+  - {fileID: 8300000, guid: 091c9eb33d756914ca35a6945b05befa, type: 3}
+  - {fileID: 8300000, guid: 37d1f1f36d3596247bbf4bd30eb6a3c0, type: 3}
+  playerFootstepsSFX:
+  - {fileID: 8300000, guid: 2448bf2a69f6b6c4fb211a72e6ac575b, type: 3}
+  - {fileID: 8300000, guid: 209da64ed778c76429dd11b81d93e951, type: 3}
+  - {fileID: 8300000, guid: c463f1b519a3c9c4c8b3f407c3313e93, type: 3}
+  - {fileID: 8300000, guid: 56be150f228e64247a33c9f971917f1b, type: 3}
+  - {fileID: 8300000, guid: f310c72d45905564a813409120bd1a34, type: 3}
+  - {fileID: 8300000, guid: 5837d54311746d5469288fb46e0cc918, type: 3}
+  - {fileID: 8300000, guid: c4e7dff536028c24588a721afb4c9710, type: 3}
+  - {fileID: 8300000, guid: 715f546029818ac4fb604ed846999c12, type: 3}
+  - {fileID: 8300000, guid: 249bb1ac7475d4e4a9813222979d585e, type: 3}
+  - {fileID: 8300000, guid: 821b222b988402d40b5d3706d1815a9a, type: 3}
+  - {fileID: 8300000, guid: c2e274efe910aff4f9b5cd7a08bcd292, type: 3}
+  - {fileID: 8300000, guid: a94edbdee1502b74dae44532189a6125, type: 3}
+  - {fileID: 8300000, guid: 969d1aa448510304aac0f8e9d139744a, type: 3}
+  - {fileID: 8300000, guid: 6cbfd2aac9e839d40acbcb10da1f726c, type: 3}
+  - {fileID: 8300000, guid: 0727494b0d4f932479de2d833fb299f9, type: 3}
+  - {fileID: 8300000, guid: b36305df561443a4a8a8abcc2c0d66bf, type: 3}
+  enemyDeathSFX:
+  - {fileID: 8300000, guid: 93514117ba781564bb5834ad946d9f79, type: 3}
+  - {fileID: 8300000, guid: 0e915b37cc5eabc4d8f3440f2bc76966, type: 3}
+  - {fileID: 8300000, guid: 272b9ab4087a327488c3d28c0aa23cd7, type: 3}
+  - {fileID: 8300000, guid: 55019836918c9b041b30b8ce451c91e2, type: 3}
+  - {fileID: 8300000, guid: 345fbf9095c13aa4897a22c91222b9d7, type: 3}
+  - {fileID: 8300000, guid: 6f05ae6414121fd4da1236827141dea2, type: 3}
+  enemyShotSFX:
+  - {fileID: 8300000, guid: 1bb5a2dcfd22d6f4fa90160771120ce5, type: 3}
+  - {fileID: 8300000, guid: a253dd1bd4a2f69449bbd2940a731e1d, type: 3}
+  - {fileID: 8300000, guid: f45511b344e527d4595be4845eb228a1, type: 3}
+  - {fileID: 8300000, guid: f34bd93a22712974ba21cad5d5001bfe, type: 3}
+  - {fileID: 8300000, guid: 04b2210e584cd0347ba6bf2750cc18ef, type: 3}
+  - {fileID: 8300000, guid: a9dd27a611700b44c9490d6f8a0c70cf, type: 3}
+  - {fileID: 8300000, guid: 2429e4bf06c4900468c9cdafe648847b, type: 3}
+  - {fileID: 8300000, guid: 1e67b5f3acebb2e44a2d3644407ee787, type: 3}

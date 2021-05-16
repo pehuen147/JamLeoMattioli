@@ -15,6 +15,8 @@ public class EnemyAI : MonoBehaviour
     IEnumerator waitShotCoroutine;
     IEnumerator changeColorCoroutine;
 
+    bool waitShotIsRunning = false;
+
     Color[] attackColors;
 
     int colorIndex;
@@ -24,6 +26,7 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        rend = GetComponentInChildren<Renderer>();
     }
 
     private void OnDisable()
@@ -43,6 +46,9 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(changeColorCoroutine);
 
         isStopped = false;
+
+
+        rend.material.SetFloat("_Weight", 0);
     }
 
     private void Start()
@@ -55,7 +61,8 @@ public class EnemyAI : MonoBehaviour
         attackColors = GameManager.SharedInstance.attackColors;
         colorIndex = Random.Range(0, attackColors.Length);
 
-        rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
+        rend.material.SetColor("_Color", attackColors[colorIndex]);
+        rend.material.SetColor("_DisintegrationColor", attackColors[colorIndex]);
     }
 
     private void Update()
@@ -64,14 +71,20 @@ public class EnemyAI : MonoBehaviour
 
         agent.isStopped = isStopped;
 
+        bool isClose = (diff.magnitude < data.minimumStopDistance);
+
+        if (!isClose && !waitShotIsRunning)
+            isStopped = false;
+
         if (!isStopped)
         {
-            isStopped = (diff.magnitude < data.minimumStopDistance);
+            isStopped = isClose;
 
             agent.SetDestination(player.position);
         }
+        else
+            transform.LookAt(player);
 
-        transform.LookAt(player);
 
         UpdateAnimation();
     }
@@ -90,8 +103,11 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator WaitAndShoot(float waitTime)
     {
+        waitShotIsRunning = true;
+
         yield return new WaitForSeconds(waitTime);
 
+        waitShotIsRunning = false;
         isStopped = false;
     }
 
@@ -106,7 +122,9 @@ public class EnemyAI : MonoBehaviour
             if (colorIndex >= attackColors.Length)
                 colorIndex = 0;
 
-            rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
+            rend.material.SetColor("_Color", attackColors[colorIndex]);
+            rend.material.SetColor("_DisintegrationColor", attackColors[colorIndex]);
+            
         }
     }
 

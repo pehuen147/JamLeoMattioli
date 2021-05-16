@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private PlayerHealth health;
+    private AudioSource aSource;
 
     private float mouseX;
     private float mouseY;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         health = GetComponent<PlayerHealth>();
+        aSource = GetComponent<AudioSource>();
 
         movementBarDefaultSize = movementBar.rectTransform.sizeDelta;
 
@@ -44,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         // Jump
         if (controller.isGrounded && Input.GetButtonDown("Jump"))
         {
+            SoundManager sManager = SoundManager.SharedInstance;
+            sManager.PlayOneShot(sManager.playerJumpSFX, aSource);
 
             velocity.y = m_PlayerData.jumpHeight;
         }
