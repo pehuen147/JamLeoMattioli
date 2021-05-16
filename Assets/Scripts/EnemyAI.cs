@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        rend = GetComponentInChildren<Renderer>();
     }
 
     private void OnDisable()
@@ -45,6 +46,9 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(changeColorCoroutine);
 
         isStopped = false;
+
+
+        rend.material.SetFloat("_Weight", 0);
     }
 
     private void Start()
@@ -57,7 +61,8 @@ public class EnemyAI : MonoBehaviour
         attackColors = GameManager.SharedInstance.attackColors;
         colorIndex = Random.Range(0, attackColors.Length);
 
-        rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
+        rend.material.SetColor("_Color", attackColors[colorIndex]);
+        rend.material.SetColor("_DisintegrationColor", attackColors[colorIndex]);
     }
 
     private void Update()
@@ -117,7 +122,9 @@ public class EnemyAI : MonoBehaviour
             if (colorIndex >= attackColors.Length)
                 colorIndex = 0;
 
-            rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
+            rend.material.SetColor("_Color", attackColors[colorIndex]);
+            rend.material.SetColor("_DisintegrationColor", attackColors[colorIndex]);
+            
         }
     }
 

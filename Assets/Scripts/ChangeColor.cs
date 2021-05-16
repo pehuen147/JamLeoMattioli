@@ -1,21 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
     [SerializeField] PlayerData m_PlayerData;
     [SerializeField] Renderer hands;
+    [SerializeField] Image[] crosshair;
+
+    [SerializeField] Color disabledColor;
+    [SerializeField] Color enabledColor;
 
     Color[] Colors;
 
+
     private int indexColor =-1;
     private Renderer rend;
-
+    
     private float currentTime = 0;
     public float timeToChangeColor = 3;
 
     public bool useButton = true;
+
+    //nuevo
+    //public Animator animator;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +43,7 @@ public class ChangeColor : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire2"))
             {
+                //animator.SetTrigger("Reload");
                 SetNewColor();
             }
         }
@@ -60,6 +71,8 @@ public class ChangeColor : MonoBehaviour
         }
         rend.material.SetColor("_EmissionColor", Colors[indexColor]);
         hands.material.SetColor("_EmissionColor", Colors[indexColor]);
+
+        UpdateCrosshair();
     }
 
     public int GetCurrentColor()
@@ -67,5 +80,16 @@ public class ChangeColor : MonoBehaviour
         return indexColor;
     }
 
+    void UpdateCrosshair()
+    {
+        for (int i = 0; i < crosshair.Length; i++)
+        {
+            crosshair[i].color = Colors[i] * disabledColor;
+        }
+
+        crosshair[indexColor].color = Colors[indexColor] * enabledColor;
+    }
+
     public int GetIndexColor() { return indexColor; }
 }
+
