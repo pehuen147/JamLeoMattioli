@@ -65,13 +65,18 @@ public class EnemyGun : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+        GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
 
         bullet.tag = GameManager.enemyTag;
 
         bullet.transform.position = spawn.position;
 
         bullet.transform.LookAt(PlayerSingleton.Instance.transform);
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+        bulletScript.SetBulletColor(enemyAI.GetCurrentColor());
+        bulletScript.SetDamage(enemyAI.GetData().damage);
     }
 
     public enum ShootingArm { left , right };  

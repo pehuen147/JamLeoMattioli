@@ -11,17 +11,21 @@ public class EnemyHealth : Health
     EnemyAI enemyAI;
     EnemyData data;
 
-    private void Start()
+    private void OnEnable()
     {
-        enemyAI = GetComponent<EnemyAI>();
-        data = enemyAI.GetData();
-
         health = data.maxHealth;
     }
 
-    public override void TakeDamage(float damage)
+    private void Awake()
     {
-        health -= damage;
+        enemyAI = GetComponent<EnemyAI>();
+        data = enemyAI.GetData();
+    }
+
+    public override void TakeDamage(float damage, int bulletColorIndex)
+    {
+        if (bulletColorIndex == enemyAI.GetCurrentColor())
+            health -= damage;
 
         if (health <= 0)
             Death();
@@ -29,6 +33,6 @@ public class EnemyHealth : Health
 
     public override void Death()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

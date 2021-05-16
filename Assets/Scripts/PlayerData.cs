@@ -11,5 +11,5 @@ public class PlayerData : ScriptableObject
     public float jumpHeight;
     public float movementBarSpeed;
     public float maxHealth;
-    public Color currentGunColor;
+    public float damage;
 }

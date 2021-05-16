@@ -5,17 +5,30 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] PlayerData m_PlayerData;
+    [SerializeField] float destroyTime = 5;
     private Renderer rend;
     public float speed = 1;
+
+    float damage;
+
+    int colorIndex = 0;
+
+    IEnumerator destroyCoroutine;
+
     public Bullet(float _speed)
     {
         speed = _speed;
     }
 
-    void Start()
+    private void Awake()
     {
         rend = GetComponent<Renderer>();
-        SetBulletColor();
+    }
+
+    void OnEnable()
+    {
+        destroyCoroutine = WaitToDestroy(destroyTime);
+        StartCoroutine(destroyCoroutine);
     }
 
     void Update()
@@ -29,9 +42,11 @@ public class Bullet : MonoBehaviour
         transform.position += (forwardVec * Time.deltaTime * speed);
     }
 
-    void SetBulletColor()
+    public void SetBulletColor(int index)
     {
-        rend.material.SetColor("_Color", m_PlayerData.currentGunColor);
+        colorIndex = index;
+        rend.material.SetColor("_EmissionColor", GameManager.SharedInstance.attackColors[colorIndex]);
+        rend.material.SetColor("_Color", GameManager.SharedInstance.attackColors[colorIndex]);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,7 +57,19 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag(GameManager.playerTag) || other.CompareTag(GameManager.enemyTag))
         {
             if (other.tag != this.tag)
-                other.GetComponent<Health>().TakeDamage(10);
+                other.GetComponent<Health>().TakeDamage(damage, colorIndex);
         }
+    }
+    
+    IEnumerator WaitToDestroy(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        this.gameObject.SetActive(false);
+    }
+
+    public void SetDamage(float _damage)
+    {
+        damage = _damage;
     }
 }

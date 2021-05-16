@@ -8,6 +8,7 @@ public class GunController : MonoBehaviour
     PlayerMovement movement;
     GunController gunController;
     ChangeColor colorChanger;
+    PlayerData data;
 
     const string reloadCommand = "Reload";
     const string shotCommand = "Shot";
@@ -26,6 +27,8 @@ public class GunController : MonoBehaviour
         animator = GetComponent<Animator>();
         movement = GetComponentInParent<PlayerMovement>();
         colorChanger = gun.GetComponent<ChangeColor>();
+
+        data = movement.GetData();
 
         mainCameraTransform = Camera.main.transform;
     }
@@ -56,7 +59,7 @@ public class GunController : MonoBehaviour
     {
         animator.SetTrigger(shotCommand);
 
-        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+        GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
         bullet.transform.position = spawnBulletPoint.transform.position;
         bullet.transform.rotation = mainCameraTransform.rotation;
 
@@ -64,7 +67,12 @@ public class GunController : MonoBehaviour
 
         Renderer bulletRenderer = bullet.GetComponent<Renderer>();
 
-        bulletRenderer.material.SetColor("_Color", colorChanger.GetCurrentColor());
+        int currentColor = colorChanger.GetCurrentColor();
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+        bulletScript.SetBulletColor(currentColor);
+        bulletScript.SetDamage(data.damage);
     }
 
     private void Reload()

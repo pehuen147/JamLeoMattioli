@@ -17,6 +17,23 @@ public class EnemyAI : MonoBehaviour
 
     bool isStopped = false;
 
+    private void OnDisable()
+    {
+        if (waitShotCoroutine != null)
+            StopCoroutine(waitShotCoroutine);
+
+        if (changeColorCoroutine != null)
+            StopCoroutine(changeColorCoroutine);
+
+        isStopped = false;
+    }
+
+    private void OnEnable()
+    {
+        changeColorCoroutine = WaitToChangeColor(data.waitToChangeColor);
+        StartCoroutine(changeColorCoroutine);
+    }
+
     private void Start()
     {
         player = PlayerSingleton.Instance.transform;
@@ -27,9 +44,6 @@ public class EnemyAI : MonoBehaviour
         colorIndex = Random.Range(0, attackColors.Length);
 
         rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
-
-        changeColorCoroutine = WaitToChangeColor(data.waitToChangeColor);
-        StartCoroutine(changeColorCoroutine);
     }
 
     private void Update()
@@ -70,14 +84,17 @@ public class EnemyAI : MonoBehaviour
         {
             yield return new WaitForSeconds(waitTime);
 
-            colorIndex++;
+            colorIndex = Random.Range(0, GameManager.SharedInstance.attackColors.Length);
 
             if (colorIndex >= attackColors.Length)
                 colorIndex = 0;
 
             rend.material.SetColor("_EmissionColor", attackColors[colorIndex]);
-
-            Debug.Log(colorIndex);
         }
+    }
+
+    public int GetCurrentColor()
+    {
+        return colorIndex;
     }
 }
