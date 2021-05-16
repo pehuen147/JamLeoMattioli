@@ -10,6 +10,7 @@ public class EnemyHealth : Health
 
     EnemyAI enemyAI;
     EnemyData data;
+    AudioSource aSource;
 
     private void OnEnable()
     {
@@ -20,12 +21,15 @@ public class EnemyHealth : Health
     {
         enemyAI = GetComponent<EnemyAI>();
         data = enemyAI.GetData();
+        aSource = GetComponent<AudioSource>();
     }
 
     public override void TakeDamage(float damage, int bulletColorIndex)
     {
         if (bulletColorIndex == enemyAI.GetCurrentColor())
             health -= damage;
+        else
+            SoundManager.SharedInstance.PlayReflectShot();
 
         if (health <= 0)
             Death();
@@ -33,6 +37,11 @@ public class EnemyHealth : Health
 
     public override void Death()
     {
+
+        SoundManager sManager = SoundManager.SharedInstance;
+
+        sManager.PlayOneShotPlayer(sManager.enemyDeathSFX);
+
         this.gameObject.SetActive(false);
     }
 }

@@ -76,6 +76,7 @@ public class EnemyGun : MonoBehaviour
         GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
 
         bullet.tag = GameManager.enemyTag;
+        bullet.layer = LayerMask.NameToLayer(GameManager.playerTag);
 
         bullet.transform.position = spawn.position;
 
