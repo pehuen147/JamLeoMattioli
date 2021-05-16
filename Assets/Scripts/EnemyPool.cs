@@ -48,4 +48,17 @@ public class EnemyPool : MonoBehaviour
 
         return tmp;
     }
+
+    public bool CheckHorde()
+    {
+        for (int i = 0; i < pooledObjects.Count; i++)
+        {
+            if (pooledObjects[i].gameObject.activeInHierarchy)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
