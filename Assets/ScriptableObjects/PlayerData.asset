@@ -17,4 +17,4 @@ MonoBehaviour:
   jumpHeight: 5
   movementBarSpeed: 25
   maxHealth: 100
-  currentGunColor: {r: 1, g: 0, b: 0, a: 0}
+  damage: 10

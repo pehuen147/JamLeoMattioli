@@ -22,9 +22,10 @@ public class EnemyHealth : Health
         data = enemyAI.GetData();
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(float damage, int bulletColorIndex)
     {
-        health -= damage;
+        if (bulletColorIndex == enemyAI.GetCurrentColor())
+            health -= damage;
 
         if (health <= 0)
             Death();

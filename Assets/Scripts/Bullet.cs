@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     private Renderer rend;
     public float speed = 1;
 
+    float damage;
+
     int colorIndex = 0;
 
     IEnumerator destroyCoroutine;
@@ -55,7 +57,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag(GameManager.playerTag) || other.CompareTag(GameManager.enemyTag))
         {
             if (other.tag != this.tag)
-                other.GetComponent<Health>().TakeDamage(10);
+                other.GetComponent<Health>().TakeDamage(damage, colorIndex);
         }
     }
     
@@ -64,5 +66,10 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         this.gameObject.SetActive(false);
+    }
+
+    public void SetDamage(float _damage)
+    {
+        damage = _damage;
     }
 }
