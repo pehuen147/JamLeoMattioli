@@ -22,6 +22,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn()
     {
-        Instantiate<GameObject>(enemy, transform.position, Quaternion.identity);
+        GameObject enemy = EnemyPool.SharedInstance.GetPooledObject();
+
+        enemy.transform.position = transform.position;
+        enemy.transform.rotation = Quaternion.identity;
     }
 }

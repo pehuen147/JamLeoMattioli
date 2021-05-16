@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d338f5e11efcc4c42bdea26801b67d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownToFire: 1
   spawnBulletPoint: {fileID: 2186587559343496852}
   gun: {fileID: 6838713201448742939}
 --- !u!1 &1127478963249733364
@@ -556,10 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlayerData: {fileID: 11400000, guid: bfb9d85d17dd86844bcea1553f97cfd5, type: 2}
-  Colors:
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0.02859211, g: 0, b: 1, a: 0}
-  - {r: 0, g: 1, b: 0.054832935, a: 0}
+  hands: {fileID: 7262466182888579813}
   timeToChangeColor: 3
   useButton: 1
 --- !u!1001 &494352019
@@ -641,8 +639,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manos
       objectReference: {fileID: 0}
+    - target: {fileID: 7262466183371904118, guid: 269757d71cd64884e8e09e810276f787, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a987817b162cfac4880597d0215aea78, type: 2}
+    - target: {fileID: 9088542584376146531, guid: 269757d71cd64884e8e09e810276f787, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9bfa2840310473459a0c2ffc0a37d2a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 269757d71cd64884e8e09e810276f787, type: 3}
+--- !u!137 &7262466182888579813 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7262466183371904118, guid: 269757d71cd64884e8e09e810276f787, type: 3}
+  m_PrefabInstance: {fileID: 494352019}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6838713201448742939 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2384658835620542840, guid: 269757d71cd64884e8e09e810276f787, type: 3}
