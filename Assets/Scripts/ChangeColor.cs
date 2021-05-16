@@ -53,7 +53,7 @@ public class ChangeColor : MonoBehaviour
         {
             indexColor = 0;
         }
-        rend.material.SetColor("_Color", Colors[indexColor]);
+        rend.material.SetColor("_EmissionColor", Colors[indexColor]);
         
         m_PlayerData.currentGunColor = Colors[indexColor];
     }
