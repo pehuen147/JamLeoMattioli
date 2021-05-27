@@ -23,6 +23,9 @@ public class MusicTrigger : MonoBehaviour
                 SoundManager.SharedInstance.PlayCorridorSong();
 
                 radio.SetActive(false);
+                door.SetActive(true);
+
+                Debug.Log("puerta");
                 break;
             case GameMusic.oneShotStart:
 
