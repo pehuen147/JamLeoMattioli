@@ -5,10 +5,13 @@ using UnityEngine;
 public class HordeManager : MonoBehaviour
 {
     [SerializeField] Transform[] spawners;
-
-    int hordeCounter = 0;
-
     [SerializeField] int initialSpawnedEnemies = 3;
+    [SerializeField] float waitTimeToSpawn = .5f;
+
+    int hordeCounter = 1;
+
+
+    IEnumerator spawnCoroutine;
 
     private void Update()
     {
@@ -17,23 +20,37 @@ public class HordeManager : MonoBehaviour
         if (hordeDead)
         {
             SpawnHorde();
+            hordeCounter++;
         }
     }
 
     void SpawnHorde()
     {
-        hordeCounter++;
+        int amountToSpawn = hordeCounter * initialSpawnedEnemies;
+        spawnCoroutine = WaitToSpawn(waitTimeToSpawn, amountToSpawn);
 
+        StartCoroutine(spawnCoroutine);
+    }
+
+    IEnumerator WaitToSpawn(float waitTime, int amount)
+    {
+        while (amount > 0)
+        {
+            amount--;
+
+            Spawn();
+
+            yield return new WaitForSeconds(waitTime);
+
+        }
+    }
+
+    void Spawn()
+    {
         for (int i = 0; i < spawners.Length; i++)
         {
-            for (int j = 0; j < hordeCounter; j++)
-            {
-                for (int k = 0; k < initialSpawnedEnemies; k++)
-                {
-                    GameObject enemy = EnemyPool.SharedInstance.GetPooledObject();
-                    enemy.transform.position = spawners[i].position;
-                }
-            }
+            GameObject enemy = EnemyPool.SharedInstance.GetPooledObject();
+            enemy.transform.position = spawners[i].position;
         }
     }
 }
